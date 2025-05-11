@@ -1,0 +1,36 @@
+/**
+ * Nome do arquivo: styles.css
+ * Data de criação: 10/05/2025
+ * Autor: Erico de Freitas Neto
+ * Matrícula: 01776648
+ *
+ * Descrição:
+ * Estilos globais para o dashboard de cartas Pokémon.
+ */
+
+body {
+  background-color: #f8f9fa;
+}
+
+.saved-card {
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.saved-card:hover {
+  transform: scale(1.05);
+}
+
+.card-details {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
