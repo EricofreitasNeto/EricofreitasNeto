@@ -8,36 +8,48 @@
  * Componente que exibe as cartas salvas pelo usuário no localStorage.
  */
 
-import { useEffect, useState } from 'react'
 
-function SavedCards() {
-  const [savedCards, setSavedCards] = useState([])
-
-  useEffect(() => {
-    const cards = JSON.parse(localStorage.getItem('pokemonCards') || [])
-    setSavedCards(cards)
-  }, [])
-
-  if (savedCards.length === 0) {
-    return <p className="text-center">Nenhuma carta salva.</p>
+function SavedCards({ cards, onCardSelect, onRemoveCard }) {
+  if (cards.length === 0) {
+    return (
+      <div className="saved-cards mb-4 p-3 bg-light rounded">
+        <h2>Cartas Salvas</h2>
+        <p className="text-center text-muted">Nenhuma carta salva ainda.</p>
+      </div>
+    );
   }
 
   return (
-    <div className="saved-cards-container mb-4">
-      <h2>Cartas Salvas</h2>
-      <div className="d-flex flex-wrap gap-2">
-        {savedCards.map((card) => (
-          <img 
-            key={card.id}
-            src={card.images.small}
-            alt={card.name}
-            className="saved-card"
-            style={{ width: '100px', height: '140px' }}
-          />
+    <div className="saved-cards mb-4 p-3 bg-light rounded">
+      <h2>Cartas Salvas ({cards.length})</h2>
+      <div className="row row-cols-2 row-cols-md-4 row-cols-lg-6 g-2">
+        {cards.map((card) => (
+          <div key={card.id} className="col">
+            <div className="card h-100">
+              <img 
+                src={card.images.small} 
+                className="card-img-top cursor-pointer"
+                alt={card.name}
+                onClick={() => onCardSelect(card)}
+                style={{ cursor: 'pointer' }}
+              />
+              <div className="card-body p-2">
+                <button
+                  className="btn btn-sm btn-danger w-100"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onRemoveCard(card.id);
+                  }}
+                >
+                  Remover
+                </button>
+              </div>
+            </div>
+          </div>
         ))}
       </div>
     </div>
-  )
+  );
 }
 
-export default SavedCards
+export default SavedCards;

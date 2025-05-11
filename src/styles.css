@@ -1,7 +1,7 @@
 /**
  * Nome do arquivo: styles.css
- * Data de criação: 10/05/2025
- * Autor: Erico de Freitas Neto
+ * Data de criação: 11/05/2025
+ * Autor: Erico
  * Matrícula: 01776648
  *
  * Descrição:
@@ -10,27 +10,49 @@
 
 body {
   background-color: #f8f9fa;
+  padding: 20px;
 }
 
-.saved-card {
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.search-container, .saved-cards, .card-details {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.card-img-top {
   transition: transform 0.2s;
-  cursor: pointer;
 }
 
-.saved-card:hover {
+.card-img-top:hover {
   transform: scale(1.05);
 }
 
-.card-details {
-  background-color: white;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.cursor-pointer {
+  cursor: pointer;
 }
 
-.search-card {
-  background-color: white;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.spinner-border {
+  vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+  .card-details .row > div {
+    margin-bottom: 1.5rem;
+  }
+  
+  .search-results .row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .search-results .row {
+    grid-template-columns: 1fr;
+  }
 }
